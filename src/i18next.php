@@ -11,6 +11,8 @@
 
 namespace Kopfwelt;
 
+use Exception;
+
  /*
   * extending translate json definitions for arrays
   * <github.com/JosefMor->
