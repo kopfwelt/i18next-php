@@ -9,7 +9,7 @@
  * ----------------------------------------------------------------------------
  */
 
-namespace kopfwelt;
+namespace Kopfwelt;
 
  /*
   * extending translate json definitions for arrays

@@ -20,6 +20,8 @@
         "phpunit/phpunit": "~4.4"
     },
     "autoload": {
-        "classmap": ["src/i18next.php"]
+        "psr-4": {
+            "Kopfwelt\\": "src"
+        }
     }
 }
