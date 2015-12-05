@@ -9,6 +9,8 @@
  * ----------------------------------------------------------------------------
  */
 
+namespace kopfwelt/i18next;
+
  /*
   * extending translate json definitions for arrays
   * <github.com/JosefMor->
