@@ -9,7 +9,7 @@
  * ----------------------------------------------------------------------------
  */
 
-namespace kopfwelt/i18next;
+namespace kopfwelt;
 
  /*
   * extending translate json definitions for arrays
