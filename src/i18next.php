@@ -293,6 +293,13 @@ class i18next {
 
                 $return = $translation[$path];
 
+                // Variable Replacement
+                $variable_regex = "/{{\s*([\w]+)\s*}}/";
+                $return = preg_replace_callback($variable_regex, function($matches) use ($variables) {
+                  if (!array_key_exists($matches[1], $variables)) return $matches[0];
+                  return $variables[$matches[1]];
+                }, $return);
+
                 break;
 
             }
