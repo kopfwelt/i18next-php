@@ -33,6 +33,12 @@ class i18next {
     private static $_language = null;
 
     /**
+     * defines the praefix and suffix of the variable subsituttion
+     * @var string subsituttion bracket pattern
+     */
+    private static $_subsituteBracketPattern = '__x__';
+
+    /**
      * Fallback language for translations not found in current language
      * @var string Fallback language
      */
@@ -81,6 +87,23 @@ class i18next {
         if (!empty($fallback))
             self::$_fallbackLanguage = $fallback;
 
+    }
+
+    /**
+     * Change default praefix and suffix of the variable subsituttion
+     */
+    public static function setSubstitutionBracket($substitutionBracket) {
+        if (strpos('x', $substitutionBracket) !== false) {
+            throw new Exception('_subsituteBracketPattern does not contain an x, e.g __x__');
+            $return = false;
+
+        } else {
+            self::$_subsituteBracketPattern = $substitutionBracket;
+            $return = true;
+
+        }
+
+        return $return;
     }
 
     /**
@@ -149,13 +172,12 @@ class i18next {
         if (!$return)
             $return = $key;
 
+        $substitutionBracket = explode('x', self::$_subsituteBracketPattern);
         foreach ($variables as $variable => $value) {
 
             if (is_string($value) || is_numeric($value))
-                $return = preg_replace('/__' . $variable . '__/', $value, $return);
-
+                    $return = preg_replace('/'.$substitutionBracket[0] . $variable . $substitutionBracket[1] . '/', $value, $return);
         }
-
         return $return;
 
     }
